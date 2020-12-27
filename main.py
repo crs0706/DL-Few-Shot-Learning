@@ -18,6 +18,8 @@ VAL_FREQ = 100  # frequency of model eval on validation dataset
 SAVE_FREQ = 100  # frequency of saving model
 TEST_SIZE = 200  # fixed
 
+# Chanhee Lee 20202210
+
 " fixed value "
 VAL_TOTAL = 100
 
@@ -76,7 +78,6 @@ def Test_phase(model, args, k):
                 # 20xN - Data Query
                 emb2 = model(data_query)
                 
-                #import pdb; pdb.set_trace()
                 # 20x5, calculates the error (distances)
                 logits = square_euclidean_metric(emb2, ovTemp)
                 
@@ -192,7 +193,6 @@ def train(args):
             # 20xN - Data Query
             emb2 = model(data_query)
             
-            #import pdb; pdb.set_trace()
             # 20x5, calculates the error (distances)
             logit = square_euclidean_metric(emb2, ovTemp)
             #logit = torch.argmin(logit,dim=1)
@@ -280,7 +280,6 @@ def train(args):
                         # 20xN - Data Query
                         emb2 = model(data_query)
                         
-                        #import pdb; pdb.set_trace()
                         # 20x5, calculates the error (distances)
                         logit = square_euclidean_metric(emb2, ovTemp)
                         #logit = torch.argmin(logit,dim=1)

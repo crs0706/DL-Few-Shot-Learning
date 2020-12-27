@@ -23,14 +23,18 @@ class FewShotModel(nn.Module):
     def __init__(self, x_dim=3, hid_dim=60, z_dim=64, num_layer=4):
         # super().__init__()
         
-        # Protonet.py
+        # Protonet.py based
         super(FewShotModel, self).__init__()
-
+        
         modules = []
+        # Input
         modules.append(conv_block(x_dim, hid_dim))
+        
+        # Sets the number of hidden layers in the model.
         for i in range(num_layer):
             modules.append(conv_block(hid_dim, hid_dim))
-
+        
+        # Output
         modules.append(conv_block(hid_dim, z_dim))
 
         self.encoder = nn.Sequential(*modules)
